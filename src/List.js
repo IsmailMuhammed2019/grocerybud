@@ -1,8 +1,10 @@
 import React from 'react'
 import { FaEdit, FaTrash } from 'react-icons/fa'
-const List = ({items}) => {
+const List = () => {
   return (
-    <h3>List Goes here</h3>
+    <div className="grocery-list">
+      <p>Hello out list</p>
+    </div>
   )
 }
 
