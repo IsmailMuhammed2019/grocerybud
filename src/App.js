@@ -42,6 +42,8 @@ function App() {
       setList(list.filter((item) => item.id !== id))
     }
 
+    
+
    return (
      <section className='section-center'>
        <form onSubmit={handleSubmit} className='grocery-form'>
