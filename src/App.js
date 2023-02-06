@@ -32,6 +32,11 @@ function App() {
       setAlert({show, type, msg})
     }
 
+    const clearList = () => {
+      setAlert(false, 'danger', 'You are about to delete all the items')
+      setList([])
+    }
+
    return (
      <section className='section-center'>
        <form onSubmit={handleSubmit} className='grocery-form'>
