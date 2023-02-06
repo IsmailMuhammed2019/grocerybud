@@ -9,10 +9,10 @@ const List = ({items}) => {
           <article key={id} className='grocery-item'>
             <p className='title'>{title}</p>
             <div className='btn-container'>
-              <button className='edit-btn'>
+              <button className='edit-btn' type='button'>
                 <FaEdit />
               </button>
-              <button className='delete-btn'>
+              <button className='delete-btn' type='button'>
                 <FaTrash />
               </button>
             </div>
