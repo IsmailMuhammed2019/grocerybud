@@ -4,7 +4,7 @@ const List = ({items}) => {
   return (
     <div className="grocery-list">
       {items.map((item) => {
-        const {id, title} = item
+        const {id, title, removeItem} = item
         return (
           <article key={id} className='grocery-item'>
             <p className='title'>{title}</p>
@@ -12,7 +12,7 @@ const List = ({items}) => {
               <button className='edit-btn' type='button'>
                 <FaEdit />
               </button>
-              <button className='delete-btn' type='button'>
+              <button className='delete-btn' type='button' >
                 <FaTrash />
               </button>
             </div>
