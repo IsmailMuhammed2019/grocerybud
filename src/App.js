@@ -16,6 +16,7 @@ function App() {
     const handleSubmit = (e) => {
       e.preventDefault()
       console.log("This is working")
+      console.log(name)
     }
 
    return (
@@ -30,7 +31,7 @@ function App() {
         <button className="clear-btn">Clear List</button>
       </form>
     </section>
-    
+
   )
 }
 
