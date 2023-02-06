@@ -41,7 +41,7 @@ function App() {
        <div className='grocery-container'>
          <List />
        </div>
-       <button className='clear-btn'>Clear List</button>
+       <button className='clear-btn'>Clear Items</button>
      </section>
    )
 }
