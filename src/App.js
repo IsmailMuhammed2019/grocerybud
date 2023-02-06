@@ -21,14 +21,15 @@ function App() {
 
    return (
      <section className='section-center'>
-       {alert.show && <Alert />}
        <form onSubmit={handleSubmit} className='grocery-form'>
+         {alert.show && <Alert />}
          <h3>Grocery List</h3>
          <div className='form-control'>
            <input
              type='text'
              name='grocery'
              value={name}
+             placeholder='E.g eggs'
              onChange={(e) => setName(e.target.value)}
              className='grocery'
            />
