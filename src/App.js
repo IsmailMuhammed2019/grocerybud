@@ -15,8 +15,15 @@ function App() {
 
     const handleSubmit = (e) => {
       e.preventDefault()
-      let newItem = {id: new Date().getTime().toString(), title: name}
+      if(!name){
+        //deal with alert here
+      }else if(name && isEditing){
+        //deal with editing here
+      }else{
+      const newItem = {id: new Date().getTime().toString(), title: name}
       setList([...list, newItem])
+      setName('')
+      }
     }
 
    return (
