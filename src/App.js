@@ -15,8 +15,8 @@ function App() {
 
     const handleSubmit = (e) => {
       e.preventDefault()
-      console.log("This is working")
-      console.log(name)
+      let newItem = {id: new Date().getTime().toString(), title: name}
+      setList([...list, newItem])
     }
 
    return (
@@ -39,7 +39,7 @@ function App() {
          </div>
        </form>
        <div className='grocery-container'>
-         <List />
+         <List items={list}/>
        </div>
        <button className='clear-btn'>Clear Items</button>
      </section>
