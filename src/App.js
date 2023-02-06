@@ -45,7 +45,9 @@ function App() {
    return (
      <section className='section-center'>
        <form onSubmit={handleSubmit} className='grocery-form'>
-         {alert.show && <Alert {...alert} removeAlert={showAlert} />}
+         {alert.show && (
+           <Alert {...alert} removeAlert={showAlert} list={list} />
+         )}
          <h3>Grocery List</h3>
          <div className='form-control'>
            <input
@@ -63,10 +65,12 @@ function App() {
        </form>
        {list.length > 0 && (
          <div className='grocery-container'>
-           <List items={list} removeItem={removeItem} list={list} />
+           <List items={list} removeItem={removeItem} />
          </div>
        )}
-       <button className='clear-btn' onClick={clearList}>Clear Items</button>
+       <button className='clear-btn' onClick={clearList}>
+         Clear Items
+       </button>
      </section>
    )
 }
