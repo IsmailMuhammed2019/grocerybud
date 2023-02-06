@@ -24,7 +24,7 @@ function App() {
         <h3>Grocery List</h3>
         <div className="form-control">
           <input type="text" name='grocery' value={name} onChange={(e) => setName(e.target.value)} className='grocery'/>
-
+          <button className="submit-btn">{isEditing ? 'Edit' : 'Submit'}</button>
         </div>
       </form>
     </section>
