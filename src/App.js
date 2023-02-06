@@ -56,7 +56,7 @@ function App() {
            <List items={list} />
          </div>
        )}
-       <button className='clear-btn' >Clear Items</button>
+       <button className='clear-btn' onClick={clearList}>Clear Items</button>
      </section>
    )
 }
