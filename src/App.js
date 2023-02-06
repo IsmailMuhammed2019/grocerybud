@@ -21,6 +21,7 @@ function App() {
       }else if(name && isEditing){
         //deal with editing here
       }else{
+        showAlert(true, 'success', 'Item Added to the list')
       const newItem = {id: new Date().getTime().toString(), title: name}
       setList([...list, newItem])
       setName('')
