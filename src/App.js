@@ -33,7 +33,7 @@ function App() {
     }
 
     const clearList = () => {
-      setAlert(false, 'danger', 'You are about to delete all the items')
+      setAlert(true, 'danger', 'You are about to delete all the items')
       setList([])
     }
 
