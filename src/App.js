@@ -34,7 +34,7 @@ function App() {
    return (
      <section className='section-center'>
        <form onSubmit={handleSubmit} className='grocery-form'>
-         {alert.show && <Alert {...alert}/>}
+         {alert.show && <Alert {...alert} removeAlert={showAlert}/>}
          <h3>Grocery List</h3>
          <div className='form-control'>
            <input
