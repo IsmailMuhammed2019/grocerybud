@@ -28,6 +28,9 @@ function App() {
             return item
           })
         )
+        setName('')
+        setEditID(null)
+        setIsEditing(false)
       }else{
         showAlert(true, 'success', 'Item Added to the list')
       const newItem = {id: new Date().getTime().toString(), title: name}
