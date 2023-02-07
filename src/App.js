@@ -45,7 +45,7 @@ function App() {
       const specificItem = list.find((item) => item.id === id)
       setIsEditing(true)
       setEditID(id)
-      setName(specificItem)
+      setName(specificItem.title)
     }
 
 
