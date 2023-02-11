@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react'
 import List from './List'
 import Alert from './Alert'
 const localStorageStore = () => {
-  const 
+  let list = localStorage.getItem('list')
+  if(list) {
+    return JSON.parse(localStorage.getItem('list'))
+  }else {
+    return []
+  }
 }
 function App() {
   const [name, setName] = useState('')
