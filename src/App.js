@@ -36,6 +36,12 @@ function App() {
     showAlert(true, 'danger', 'You have cleared the list')
     setList([])
   }
+
+  const deleteItem = (id) => {
+    const itemdeleted = list.map((item) => item.id !== id)
+    setList([...list, itemdeleted])
+    showAlert(true, 'danger', 'item has been deleted')
+  }
   return (
     <section className='section-center'>
       {alert.show && <Alert {...alert} removeAlert={removeAlert} list={list}/>}
@@ -56,7 +62,7 @@ function App() {
       </form>
       {list.length > 0 && (
         <div className='grocery-container'>
-          <List items={list} />
+          <List items={list} deleteItem={deleteItem}/>
         </div>
       )}
       <button className='clear-btn' onClick={clearList}>Clear List</button>
