@@ -33,6 +33,7 @@ function App() {
     showAlert(false, '', '')
   }
   const clearList = () => {
+    showAlert(true, 'danger', 'You have cleared the list')
     setList([])
   }
   return (
