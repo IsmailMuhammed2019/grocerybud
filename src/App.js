@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import List from './List'
 import Alert from './Alert'
-
+const localStorageStore = () => {
+  const 
+}
 function App() {
   const [name, setName] = useState('')
   const [list, setList] = useState([])
@@ -62,6 +64,10 @@ function App() {
     showAlert(true, 'danger', 'you want to edit selected item')
 
   }
+
+  useEffect(() => {
+    localStorage.setItem('list', JSON.stringify(list))
+  },[list])
   return (
     <section className='section-center'>
       {alert.show && <Alert {...alert} removeAlert={removeAlert} list={list}/>}
