@@ -10,7 +10,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault()
     const newItem = {id: new Date().getTime().toString(), title: name}
-    setName([...list, newItem])
+    setList([...list, newItem])
     console.log(list)
   }
   return (
