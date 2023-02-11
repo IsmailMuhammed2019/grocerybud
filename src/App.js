@@ -9,6 +9,9 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    const newItem = {id: new Date().getTime().toString(), title: name}
+    setName([...list, newItem])
+    console.log(list)
   }
   return (
     <section className="section-center">
