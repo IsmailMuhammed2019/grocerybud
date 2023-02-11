@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import List from './List'
 import Alert from './Alert'
+import { FaPlaceOfWorship } from 'react-icons/fa'
 
 function App() {
   const [name, setName] = useState('')
@@ -11,12 +12,13 @@ function App() {
   
 
   const handleSubmit = (e) => {
+        e.preventDefault()
     if(!name) {
       showAlert(true, 'danger', 'enter a value')
     }else if(name && edit){
       //deal with edit
     }else{
-    e.preventDefault()
+      showAlert(true, 'success', 'Item successfull added')
     const newItem = {id: new Date().getTime().toString(), title: name}
     setList([...list, newItem])
     setName('')
@@ -24,11 +26,16 @@ function App() {
     }
 
   const showAlert = (show=false, type='', msg='') => {
-    setAlert(show, type, msg)
+    setAlert({show, type, msg})
   }
+
+  const removeAlert = () => {
+    showAlert(false, '', '')
+  }
+
   return (
     <section className='section-center'>
-      {alert.show && <Alert {...alert} />}
+      {alert.show && <Alert {...alert} removeAlert={removeAlert}/>}
       <form onSubmit={handleSubmit} className='grocery-form'>
         <h3>Grocery List</h3>
         <div className='form-control'>
@@ -36,7 +43,8 @@ function App() {
             type='text'
             className='grocery'
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)} 
+            placeholder='e.g eggs'
           />
           <button className='submit-btn' type='submit'>
             {edit ? 'edit' : 'submit'}
