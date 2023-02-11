@@ -39,7 +39,7 @@ function App() {
 
   const deleteItem = (id) => {
     const itemdeleted = list.filter((item) => item.id !== id)
-    setList([...list, itemdeleted])
+    setList(itemdeleted)
     showAlert(true, 'danger', 'item has been deleted')
   }
   return (
