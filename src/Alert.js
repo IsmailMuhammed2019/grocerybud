@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-const Alert = ({msg, type, removeAlert, list }) => {
+const Alert = ({type, msg}) => {
   return (
     <p>alert page</p>
   )
