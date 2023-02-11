@@ -32,10 +32,12 @@ function App() {
   const removeAlert = () => {
     showAlert(false, '', '')
   }
-
+  const clearList = () => {
+    setList([])
+  }
   return (
     <section className='section-center'>
-      {alert.show && <Alert {...alert} removeAlert={removeAlert}/>}
+      {alert.show && <Alert {...alert} removeAlert={removeAlert} list={list}/>}
       <form onSubmit={handleSubmit} className='grocery-form'>
         <h3>Grocery List</h3>
         <div className='form-control'>
@@ -56,7 +58,7 @@ function App() {
           <List items={list} />
         </div>
       )}
-      <button className='clear-btn'>Clear List</button>
+      <button className='clear-btn' onClick={clearList}>Clear List</button>
     </section>
   )
 }
