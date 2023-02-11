@@ -11,6 +11,9 @@ function App() {
   
 
   const handleSubmit = (e) => {
+    if(!name) {
+      showAlert(true, 'danger', 'enter a value')
+    }
     e.preventDefault()
     const newItem = {id: new Date().getTime().toString(), title: name}
     setList([...list, newItem])
