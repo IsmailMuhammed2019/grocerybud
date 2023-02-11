@@ -38,7 +38,7 @@ function App() {
   }
 
   const deleteItem = (id) => {
-    const itemdeleted = list.map((item) => item.id !== id)
+    const itemdeleted = list.filter((item) => item.id !== id)
     setList([...list, itemdeleted])
     showAlert(true, 'danger', 'item has been deleted')
   }
