@@ -15,7 +15,7 @@ function App() {
       <form onSubmit={handleSubmit} className="grocery-form">
         <h3>Grocery List</h3>
         <div className="form-control">
-          <input type="text" className="grocery" />
+          <input type="text" className="grocery" value={name} onChange={(e) => setName(e.target.value)} />
           <button className="submit-btn">
             submit
           </button>
