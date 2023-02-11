@@ -13,11 +13,14 @@ function App() {
   const handleSubmit = (e) => {
     if(!name) {
       showAlert(true, 'danger', 'enter a value')
-    }
+    }else if(name && edit){
+      //deal with edit
+    }else{
     e.preventDefault()
     const newItem = {id: new Date().getTime().toString(), title: name}
     setList([...list, newItem])
     setName('')
+    }
     }
 
   const showAlert = (show=false, type='', msg='') => {
@@ -25,6 +28,7 @@ function App() {
   }
   return (
     <section className='section-center'>
+      {alert.show && <Alert />}
       <form onSubmit={handleSubmit} className='grocery-form'>
         <h3>Grocery List</h3>
         <div className='form-control'>
