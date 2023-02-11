@@ -8,6 +8,7 @@ function App() {
   const [list, setList] = useState([])
   const [edit, setEdit] = useState(false)
   const [alert, setAlert] = useState({show: false, type:'', msg: ''})
+  const [editId, setEditId] = useState(null)
 
   
 
@@ -42,6 +43,14 @@ function App() {
     setList(itemdeleted)
     showAlert(true, 'danger', 'item has been deleted')
   }
+
+  const editItem = (id) => {
+    const itemEdit = list.find((item) => item.id === id)
+    setName(itemEdit)
+    setEdit(true)
+    showAlert(true, 'success', 'item edited successfully')
+
+  }
   return (
     <section className='section-center'>
       {alert.show && <Alert {...alert} removeAlert={removeAlert} list={list}/>}
@@ -62,7 +71,7 @@ function App() {
       </form>
       {list.length > 0 && (
         <div className='grocery-container'>
-          <List items={list} deleteItem={deleteItem}/>
+          <List items={list} deleteItem={deleteItem} editItem={editItem}/>
         </div>
       )}
       <button className='clear-btn' onClick={clearList}>Clear List</button>
