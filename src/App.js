@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import List from './List'
 import Alert from './Alert'
-import { FaPlaceOfWorship } from 'react-icons/fa'
 
 function App() {
   const [name, setName] = useState('')
