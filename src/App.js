@@ -18,22 +18,27 @@ function App() {
     }
       console.log(list)
   return (
-    <section className="section-center">
-      <form onSubmit={handleSubmit} className="grocery-form">
+    <section className='section-center'>
+      <form onSubmit={handleSubmit} className='grocery-form'>
         <h3>Grocery List</h3>
-        <div className="form-control">
-          <input type="text" className="grocery" value={name} onChange={(e) => setName(e.target.value)} />
-          <button className="submit-btn" type='submit'>
+        <div className='form-control'>
+          <input
+            type='text'
+            className='grocery'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <button className='submit-btn' type='submit'>
             {edit ? 'edit' : 'submit'}
           </button>
         </div>
       </form>
-      <div className="grocery-container">
-        <List items={list} />
-      </div>
-      <button className="clear-btn">
-        Clear List
-      </button>
+      {list.length > 0 && (
+        <div className='grocery-container'>
+          <List items={list} />
+        </div>
+      )}
+      <button className='clear-btn'>Clear List</button>
     </section>
   )
 }

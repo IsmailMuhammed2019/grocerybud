@@ -7,7 +7,7 @@ const List = ({items}) => {
         const {id, title} = item
         return (
           <article className="grocery-item" key={id}>
-            {title}
+            <p className="title">{title}</p>
           </article>
         )
       })}
