@@ -46,9 +46,9 @@ function App() {
 
   const editItem = (id) => {
     const itemEdit = list.find((item) => item.id === id)
-    setName(itemEdit)
+    setName(itemEdit.title)
     setEdit(true)
-    showAlert(true, 'success', 'item edited successfully')
+    showAlert(true, 'danger', 'you want to edit selected item')
 
   }
   return (
