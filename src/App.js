@@ -3,10 +3,23 @@ import List from './List'
 import Alert from './Alert'
 
 function App() {
-  const [name, setName] = useState(''
-  )
+  const [name, setName] = useState('')
+  const [list, setList] = useState([])
   return (
-    <p>app page</p>
+    <section className="section-center">
+      <form action="" className="grocery-form">
+        <h3>Grocery List</h3>
+        <div className="form-control">
+          <input type="text" className="grocery" />
+          <button className="submit-btn">
+            submit
+          </button>
+        </div>
+      </form>
+      <button className="clear-btn">
+        Clear List
+      </button>
+    </section>
   )
 }
 
