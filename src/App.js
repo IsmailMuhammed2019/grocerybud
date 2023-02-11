@@ -11,8 +11,9 @@ function App() {
     e.preventDefault()
     const newItem = {id: new Date().getTime().toString(), title: name}
     setList([...list, newItem])
-    console.log(list)
-  }
+    setName('')
+    }
+      console.log(list)
   return (
     <section className="section-center">
       <form onSubmit={handleSubmit} className="grocery-form">
@@ -24,6 +25,9 @@ function App() {
           </button>
         </div>
       </form>
+      <div className="grocery-container">
+        <List items={list} />
+      </div>
       <button className="clear-btn">
         Clear List
       </button>
