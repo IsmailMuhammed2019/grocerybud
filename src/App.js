@@ -8,7 +8,6 @@ function App() {
   const [edit, setEdit] = useState(false)
   const [alert, setAlert] = useState({show: false, type:'', msg: ''})
   const [editId, setEditId] = useState(null)
-
   
 
   const handleSubmit = (e) => {
@@ -17,6 +16,7 @@ function App() {
       showAlert(true, 'danger', 'enter a value')
     }else if(name && edit){
       //deal with edit
+      
     }else{
       showAlert(true, 'success', 'Item successfull added')
     const newItem = {id: new Date().getTime().toString(), title: name}
@@ -47,6 +47,7 @@ function App() {
     const itemEdit = list.find((item) => item.id === id)
     setName(itemEdit.title)
     setEdit(true)
+    setEditId(id)
     showAlert(true, 'danger', 'you want to edit selected item')
 
   }
