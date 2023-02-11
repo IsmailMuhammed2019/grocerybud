@@ -5,7 +5,7 @@ import Alert from './Alert'
 function App() {
   const [name, setName] = useState('')
   const [list, setList] = useState([])
-  const [edit, setEdit] = useState(false)
+  const [edit, setEdit] = useState(true)
   const [alert, setAlert] = useState({show: false, type:'', msg: ''})
 
   
@@ -23,8 +23,8 @@ function App() {
         <h3>Grocery List</h3>
         <div className="form-control">
           <input type="text" className="grocery" value={name} onChange={(e) => setName(e.target.value)} />
-          <button className="submit-btn">
-            submit
+          <button className="submit-btn" type='submit'>
+            {edit ? 'edit' : 'submit'}
           </button>
         </div>
       </form>
@@ -32,7 +32,7 @@ function App() {
         <List items={list} />
       </div>
       <button className="clear-btn">
-        Clear List
+        {edit ? 'edit' : 'show'}
       </button>
     </section>
   )
