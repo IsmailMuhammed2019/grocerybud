@@ -16,7 +16,10 @@ function App() {
     setList([...list, newItem])
     setName('')
     }
-      console.log(list)
+
+  const showAlert = (show=false, type='', msg='') => {
+    setAlert(show, type, msg)
+  }
   return (
     <section className='section-center'>
       <form onSubmit={handleSubmit} className='grocery-form'>
