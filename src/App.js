@@ -5,9 +5,14 @@ import Alert from './Alert'
 function App() {
   const [name, setName] = useState('')
   const [list, setList] = useState([])
+  
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
   return (
     <section className="section-center">
-      <form action="" className="grocery-form">
+      <form onSubmit={handleSubmit} className="grocery-form">
         <h3>Grocery List</h3>
         <div className="form-control">
           <input type="text" className="grocery" />
