@@ -1,104 +1,110 @@
 import React, { useState, useEffect } from 'react'
 import List from './List'
 import Alert from './Alert'
-const localStorageStore = () => {
+import { isEditable } from '@testing-library/user-event/dist/utils'
+
+const storeLocalStorage = () => {
   let list = localStorage.getItem('list')
-  if(list) {
+  if (list) {
     return JSON.parse(localStorage.getItem('list'))
-  }else {
+  } else {
     return []
   }
 }
 function App() {
   const [name, setName] = useState('')
-  const [list, setList] = useState(localStorageStore())
+  const [list, setList] = useState(storeLocalStorage)
   const [edit, setEdit] = useState(false)
-  const [alert, setAlert] = useState({show: false, type:'', msg: ''})
   const [editId, setEditId] = useState(null)
-  
+  const [alert, setAlert] = useState({ show: false, type: '', msg: '' })
 
-  const handleSubmit = (e) => {
-        e.preventDefault()
-    if(!name) {
-      showAlert(true, 'danger', 'enter a value')
-    }else if(name && edit){
-      //deal with edit
-      setList(list.map((item) => {
-      if(item.id === editId){
-        return {...item, title:name}
-    }
-    return item
-    }))
-
-    setEdit(false)
-    setEditId(null)
-    setName('')
-    showAlert(true, 'success', 'you have edited item')
-
-    }else{
+  const handleSumbit = (e) => {
+    e.preventDefault()
+    if (!name) {
+      // deal with alert only here
+      showAlert(true, 'danger', 'pleae add an item')
+    } else if (name && edit) {
+      //deal with edit here
+      setList(
+        list.map((item) => {
+          if (item.id === editId) {
+            return { ...item, title: name }
+          }
+          return item
+        })
+      )
+      setName('')
+      setEditId(null)
+      setEdit(false)
+      showAlert(true, 'success', 'item edited successfully')
+    } else {
       showAlert(true, 'success', 'Item successfull added')
-    const newItem = {id: new Date().getTime().toString(), title: name}
-    setList([...list, newItem])
-    setName('')
+      const newItem = { id: new Date().getTime().toString(), title: name }
+      setList([...list, newItem])
+      setName('')
     }
-    }
+  }
 
-  const showAlert = (show=false, type='', msg='') => {
-    setAlert({show, type, msg})
+  const showAlert = (show = false, type = '', msg = '') => {
+    setAlert({ show, type, msg })
   }
 
   const removeAlert = () => {
     showAlert(false, '', '')
   }
+
   const clearList = () => {
-    showAlert(true, 'danger', 'You have cleared the list')
     setList([])
   }
 
   const deleteItem = (id) => {
-    const itemdeleted = list.filter((item) => item.id !== id)
-    setList(itemdeleted)
-    showAlert(true, 'danger', 'item has been deleted')
+    const itemdelted = list.filter((item) => item.id !== id)
+    setList(itemdelted)
+    showAlert(true, 'danger', 'item deleted successfully')
   }
 
-  const editItem = (id) => {
-    const itemEdit = list.find((item) => item.id === id)
-    setName(itemEdit.title)
+  const editList = (id) => {
+    const itemedited = list.find((item) => item.id === id)
+    setName(itemedited.title)
     setEdit(true)
     setEditId(id)
-    showAlert(true, 'danger', 'you want to edit selected item')
-
+    showAlert(true, 'danger', 'you want to edit item')
   }
 
   useEffect(() => {
     localStorage.setItem('list', JSON.stringify(list))
-  },[list])
+  }, [list])
+
   return (
     <section className='section-center'>
-      {alert.show && <Alert {...alert} removeAlert={removeAlert} list={list}/>}
-      <form onSubmit={handleSubmit} className='grocery-form'>
+      {alert.show && (
+        <Alert
+          showAlert={showAlert}
+          {...alert}
+          removeAlert={removeAlert}
+          list={list}
+        />
+      )}
+      <form onSubmit={handleSumbit} className='grocery-form'>
         <h3>Grocery List</h3>
         <div className='form-control'>
           <input
-            type='text'
             className='grocery'
             value={name}
-            onChange={(e) => setName(e.target.value)} 
-            placeholder='e.g eggs'
+            onChange={(e) => setName(e.target.value)}
           />
           <button className='submit-btn' type='submit'>
-            {edit ? 'edit' : 'submit'}
+            Submit
           </button>
         </div>
       </form>
-      {list.length > 0 && (
-        <div className='grocery-container'>
-          <List items={list} deleteItem={deleteItem} editItem={editItem}/>
-        </div>
-      )}
-      <button className='clear-btn' onClick={clearList}>Clear List</button>
+      <div className='grocery-container'>
+        <List items={list} deleteItem={deleteItem} editList={editList} />
+      </div>
+      <button className='clear-btn' onClick={clearList}>
+        Clear List
+      </button>
     </section>
   )
 }
-
 export default App
